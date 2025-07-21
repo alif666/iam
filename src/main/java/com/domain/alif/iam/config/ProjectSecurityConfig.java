@@ -1,11 +1,6 @@
 package com.domain.alif.iam.config;
 
 
-import com.domain.alif.iam.person.auth.JwtRequestFilter;
-import com.domain.alif.iam.person.auth.UsernamePasswordAuthenticationProvider;
-
-import lombok.RequiredArgsConstructor;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +12,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.domain.alif.iam.person.auth.JwtRequestFilter;
+import com.domain.alif.iam.person.auth.UsernamePasswordAuthenticationProvider;
+
+import lombok.RequiredArgsConstructor;
 
 @Configuration
 @EnableWebSecurity
@@ -33,6 +33,7 @@ public class ProjectSecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/login").permitAll()
                 .requestMatchers("/api/auth/me").authenticated()
+                .requestMatchers("/api/devices/**").authenticated()
                 .anyRequest().denyAll()
             )
             .sessionManagement(session -> session
