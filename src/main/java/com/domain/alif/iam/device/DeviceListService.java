@@ -6,6 +6,8 @@ public interface DeviceListService {
     
     List<DeviceList> getAllDevices();
 
+    List<DeviceList> getAllDevicesPaginateDeviceLists(int from, int size);
+
     DeviceList getDeviceById(Long id);
 
     DeviceList createDevice(DeviceList d);

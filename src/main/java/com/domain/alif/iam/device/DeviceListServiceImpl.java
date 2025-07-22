@@ -65,6 +65,11 @@ public class DeviceListServiceImpl implements DeviceListService {
         repository.deleteById(id);
     }
 
+    @Override
+    public List<DeviceList> getAllDevicesPaginateDeviceLists(int from, int size) {
+        return repository.getPaginatedDeviceList(from, size);
+    }
+
     
 
 }
