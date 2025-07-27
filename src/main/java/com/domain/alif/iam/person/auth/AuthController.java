@@ -30,7 +30,7 @@ public class AuthController {
             );
 
             String email = request.getEmail();
-            String role = auth.getAuthorities().iterator().next().getAuthority(); // "ROLE_ADMIN"
+            // String role = auth.getAuthorities().iterator().next().getAuthority(); // "ROLE_ADMIN"
 
             String token = jwtUtil.generateToken(email);
             return ResponseEntity.ok(Map.of("token", token));

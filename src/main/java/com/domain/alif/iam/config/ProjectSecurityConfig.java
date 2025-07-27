@@ -33,7 +33,7 @@ public class ProjectSecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/login").permitAll()
                 .requestMatchers("/api/auth/me").authenticated()
-                .requestMatchers("/api/devices/**").authenticated()
+                .requestMatchers("/api/devices/*/**").permitAll()
                 .anyRequest().denyAll()
             )
             .sessionManagement(session -> session
