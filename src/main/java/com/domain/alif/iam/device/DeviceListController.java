@@ -3,15 +3,7 @@ package com.domain.alif.iam.device;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/devices")
@@ -20,35 +12,55 @@ public class DeviceListController {
     @Autowired
     private DeviceListService service;
 
+    /**
+     * Get all devices
+     */
     @GetMapping
-    public List<DeviceList> getAll() {
+    public List<DeviceList> getAllDevices() {
         return service.getAllDevices();
     }
 
+    /**
+     * Get devices with pagination support
+     */
     @GetMapping("/paginated")
-    public List<DeviceList> getPaginatedDeviceList(
+    public List<DeviceList> getPaginatedDevices(
             @RequestParam int from,
             @RequestParam int end) {
-        return service.getAllDevicesPaginateDeviceLists(from, end);
+        return service.getPaginatedDevices(from, end);
     }
 
+    /**
+     * Get a device by ID
+     */
     @GetMapping("/{id}")
-    public DeviceList getById(@PathVariable Long id) {
+    public DeviceList getDeviceById(@PathVariable Long id) {
         return service.getDeviceById(id);
     }
 
+    /**
+     * Create a new device entry
+     */
     @PostMapping
-    public DeviceList create(@RequestBody DeviceList deviceList) {
+    public DeviceList createDevice(@RequestBody DeviceList deviceList) {
         return service.createDevice(deviceList);
     }
 
+    /**
+     * Update an existing device
+     */
     @PutMapping("/{id}")
-    public DeviceList update(@PathVariable Long id, @RequestBody DeviceList deviceList) {
+    public DeviceList updateDevice(
+            @PathVariable Long id,
+            @RequestBody DeviceList deviceList) {
         return service.updateDevice(id, deviceList);
     }
 
+    /**
+     * Delete a device by ID
+     */
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void deleteDevice(@PathVariable Long id) {
         service.deleteDevice(id);
     }
 }

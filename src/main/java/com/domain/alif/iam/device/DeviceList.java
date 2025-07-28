@@ -25,33 +25,35 @@ public class DeviceList extends AuditMetadata {
     private String team;
 
     @Column(name = "item_tag")
-    private String itemTag;
+    private String tag;
 
     @Column(name = "item_package")
     private String itemPackage;
 
-    @Column(name = "item_responsible_id")
-    private String itemResponsibleId;
+    @Column(name = "desk_id")
+    private String deskId;
+
+    @Column(name = "office_space")
+    private String officeSpace;
+
+    @Column(name = "cabinet_number")
+    private String cabinetNumber;
+
+    @Column(name = "responsible_name")
+    private String responsibleName;
 
     @Column(name = "item_name")
-    private String itemName;
+    private String name;
 
     @Column(name = "item_ref_id")
-    private String itemRefId;
+    private String refId;
 
     @Column(name = "item_category")
-    private String itemCategory;
+    private String category;
 
     @Column(name = "item_group")
-    private String itemGroup;
-
-    @Column(name = "item_brand")
-    private String itemBrand;
-
-    @Column(name = "item_description")
-    private String itemDescription;
+    private String group;
 
     @Column(name = "item_remark")
-    private String itemRemark;
+    private String remark;
 }
-
